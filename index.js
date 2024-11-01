@@ -4,13 +4,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const userRouter = require('./route/user');
 const busRouter = require('./route/bus');
+const connectDB = require('./db');
 const port = process.env.PORT || 8000;
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/bus-system')
-.then(()=>{
-    console.log("database connected");
-});
+connectDB();
 
 app.use(cors());
 app.use(express.json());
